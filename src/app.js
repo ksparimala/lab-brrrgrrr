@@ -3,8 +3,6 @@
 
 //Initial price of the burger
 var wholeWheatBun = 10;
-let results=0;
-
 //Ingredients of the burger along with the price
 // Clue: the name is same as the textcontent of the button. Will be useful later on :)
 var ingredients = {
@@ -32,7 +30,7 @@ function renderAll() {
   renderOnions();
   renderLettuce();
   renderButtons();
- // renderIngredientsBoard();
+  renderIngredientsBoard();
   renderPrice();
 }
 
@@ -41,6 +39,7 @@ function renderPatty() {
   //you can also use getElementById
   if (state.Patty) {
     patty.style.display = "inherit";
+    document.querySelector(".items")=focus();
   } else {
     patty.style.display = "none";
   }
@@ -88,7 +87,6 @@ function renderLettuce() {
 }
 document.querySelector(".btn-patty").onclick=function () {
   state.Patty = !state.Patty;
-  renderButtons();
   renderAll();
 };
 // Trial 2 - Setup event listener for the cheese button
@@ -114,12 +112,11 @@ document.querySelector(".btn-lettuce").onclick = function () {
 //Challenge 1 - Add/Remove the class active to the buttons based on state
 function renderButtons()
 {
-  if(document.querySelector(".btn-patty").onclick)
+  if(state.Patty=="true")
   {
-    wholeWheatBun=Number(wholeWheatBun)+NUmber(patty);
+    document.querySelector(".items")=focus();
   }
-  return wholeWheatBun;
-  renderPrice();
+  renderAll();
 }
 //Challenge 2 - Render only the items selected in the ingredients board based on the state
 //Judgement 1
